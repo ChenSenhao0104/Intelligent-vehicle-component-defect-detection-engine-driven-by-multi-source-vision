@@ -1,0 +1,66 @@
+confusion_matrix 混淆矩阵
+confusion_matrix_normalized标准化混淆矩阵
+它们用于评估模型在多类别分类任务中的表现，特别是在你进行 表面缺陷视觉检测 时
+1. 第一张图：混淆矩阵（Confusion Matrix）
+混淆矩阵是一个表格，它展示了模型预测结果与实际标签之间的关系。每个矩阵的元素表示预测类别与实际类别的匹配情况。
+
+图示分析：
+行（Predicted）：表示模型预测的类别。
+
+列（True）：表示实际的类别。
+
+每个单元格中的数值表示模型预测某一类别的样本的数量。
+
+例如：
+
+第一行、第一列（crazing）的值是 73，表示模型预测为 crazing 类别的样本中，实际也是 crazing 类别的数量。
+
+第二行、第一列（inclusion）的值是 170，表示实际是 inclusion 类别的样本中，模型预测为 crazing 类别的数量。
+
+重要分析：
+对角线上的值：表示模型正确分类的样本数，例如 crazing 的 73 表示模型正确识别了 73 个 crazing 缺陷。
+
+非对角线上的值：表示误分类的数量。例如，crazing 类别的 170，意味着实际是 inclusion 类别，但被模型误分类为 crazing。
+
+
+
+2. 第二张图：标准化混淆矩阵（Confusion Matrix Normalized）
+标准化混淆矩阵通过对每一行（实际类别）进行归一化处理，计算每个类别的预测准确度。它展示了每个类别的 预测准确率，通过比例表示，而不是绝对数量。
+
+图示分析：
+每个单元格中的数值表示 预测类别在该类别中的占比。例如：
+
+第一行、第一列（crazing）的值是 0.47，表示实际是 crazing 的样本中，模型正确预测的比例为 47%。
+
+第二行、第二列（inclusion）的值是 0.85，表示实际是 inclusion 的样本中，模型预测为 inclusion 的比例为 85%。
+
+重要分析：
+对角线上的值：代表每个类别的 准确率。例如，inclusion 类别的 0.85，表示 85% 的 inclusion 样本被正确分类。
+
+非对角线上的值：表示模型误分类的比例。例如，crazing 类别的 0.53，表示 53% 的 crazing 样本被误分类为其他类别。
+
+总结：
+混淆矩阵（第一张图）用于表示模型的 原始分类性能，即预测的数量。
+
+标准化混淆矩阵（第二张图）通过归一化处理，让我们可以看到每个类别的 相对表现，有助于了解每个类别的 预测准确性，并且更好地比较不同类别的检测效果。
+
+这两张图结合在一起，可以帮助你分析 表面缺陷视觉检测系统 中各个缺陷类别的 检测准确性、误报与漏报情况，并提供进一步优化模型的依据。
+
+
+
+labels
+labels_correlogram
+F1_curve
+P_curve
+PR_curve
+R_curve
+results
+train_batch0
+train_batch1
+train_batch2
+val_batch0_labels
+val_batch0_pred
+val_batch1_labels
+val_batch1_pred
+val_batch2_labels
+val_batch2_pred

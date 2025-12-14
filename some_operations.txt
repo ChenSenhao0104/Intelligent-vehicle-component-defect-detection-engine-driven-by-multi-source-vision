@@ -1,0 +1,26 @@
+激活 py39 环境：conda activate py39
+D:\anaconda\anaconda3\envs\py39\Lib\site-packages\ultralytics
+cfg文件夹中的配置文件是用于定义模型如何构建和训练的重要文件，用户可以根据需要修改这些文件以适应不同的任务和数据集
+存放yolo.yaml的位置：D:\anaconda\anaconda3\envs\py39\Lib\site-packages\ultralytics\cfg\models
+cd /d "D:\steel_defect_detection\SteelDetection\SteelDetection\make_photo\Curve"
+
+.pt 是模型大脑，是神经网络的“体力和智力”，可以是预训练好的，也可以是你训练出来的。
+.yaml 是数据说明书，告诉模型去哪找图片、有哪些类别，用于让模型知道如何学！
+
+.pt 是什么？	是一个 已经训练好或部分训练好的模型文件。例如 yolov8n.pt, yolov8m.pt 是 Ultralytics 官方提供的 预训练模型
+为什么还要训练？	因为它是通用模型，比如用 COCO 数据训练的，它不懂你钢板上的裂纹。你要在你自己的数据（比如车辆零部件）上微调（Fine-tune）它，它才能学会你领域的缺陷！
+所以我们训练是为了？	迁移学习，在预训练模型基础上用你自己的数据进行再训练，提升准确率！
+
+
+.yaml 是一个文本配置文件，告诉 YOLO 你数据集的位置、类别名称
+为啥必须有？训练时，模型不知道你图片在哪儿、每个类别是什么，它就得靠 .yaml 来知道
+
+self.model = YOLO(Config.model_path, task='detect')//////在MainProgram.py的第56行
+解读：YOLO(...) 是 ultralytics 提供的 API，用于加载模型；
+    Config.model_path 是一个变量，它定义了模型的路径；
+    task='detect' 告诉 YOLO 要加载的是一个目标检测模型；
+    self.model 就是你程序中保存模型对象的变量
+打开Config.py文件，里面有一行model_path = 'models/best.pt'，也就是说Config.model_path == "models/best.pt"
+所以我们通过配置文件Config.model_path间接加载了models/best.pt模型，而且是用来执行目标检测任务的
+
+detect_compare.py，用于生成“原图 vs 检测图”的对比成果图

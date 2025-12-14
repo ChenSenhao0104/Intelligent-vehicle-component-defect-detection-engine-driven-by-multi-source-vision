@@ -1,0 +1,4 @@
+Modify the system cover image script
+update_ui_resources.bat	是一个批处理脚本，用来自动替换图片 + 编译 .qrc	? 不是 UI 加载代码，而是资源准备工作
+UiMain.py	是通过 pyuic5 生成的 PyQt UI 界面代码，包含了 self.label_show、布局、控件	? 是 UI加载的代码结构
+MainProgram.py（或你主函数）	是你运行 UI 程序的入口，通常会调用 Ui_MainWindow.setupUi() 并执行逻辑	? 是你初始化 UI 的地方，也是重构代码的好位置
